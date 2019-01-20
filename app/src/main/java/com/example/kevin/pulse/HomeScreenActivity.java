@@ -54,6 +54,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         setUpLocationListener();
         setUpStartButtonListener();
         setUpStopButtonListener();
+        setUpMapButtonListener();
 
         if (!isLocationEnabled())
         {
@@ -164,9 +165,16 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
     private void setUpMapButtonListener()
     {
+        final Intent intent = new Intent(this, MapsActivity.class);
+
         tMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle extras = new Bundle();
+                extras.putSerializable("key", tRPIMap);
+                intent.putExtras(extras);
+                startActivity(intent);
+
 
             }
         });
